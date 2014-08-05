@@ -1,5 +1,5 @@
 import simplejson as json
-import requests, time
+import requests, time, datetime
 #import cPickle as pickle
 
 url = 'http://fantasy.premierleague.com/web/api/elements/%d/'
@@ -25,6 +25,6 @@ while r.status_code == 200:
 if trycount <= 5:
   print 'Broke out of loop since status code not 200 but ' + str(r.status_code)
 
-with open('data.json','w') as outfile:
+with open(str(datetime.datetime.now())+'.json','w') as outfile:
   json.dump(elements, outfile)
 #pickle.dump(elements, open("pickle.p", "wb"))  
